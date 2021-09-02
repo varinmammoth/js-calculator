@@ -1,0 +1,114 @@
+p {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: aqua;
+}
+
+.calcContainer {
+    height: 500px;
+    width: 300px;
+    background-color: rgb(87, 174, 214);
+    background-image: linear-gradient(rgb(87, 174, 214), rgb(152, 195, 216));
+    border-radius: 10px;
+    border: solid;
+    border-width: 0.5px;
+}
+
+.screen {
+    height: 30%;
+    margin: 0;
+    background-color: transparent;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-bottom: solid;
+    border-width: 0.1px;
+
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.fullOperation {
+    font-size: 20px;
+    padding: 0;
+    padding-top: 15px;
+    margin: 0;
+}
+
+.userInputDisp {
+    font-size: 50px;
+    padding: 0;
+    margin: 0;
+}
+
+.keypad {
+    height: 70%;
+    width: 100%;
+    margin: 0;
+    background-color: transparent;
+    border-radius: 0px 0px 10px 10px;
+    
+    display: inline-grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    justify-content: center;
+    align-items: center;
+
+    padding: 0px;
+}
+
+.btnContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+btn {
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+    font-size: 25px;
+    font-weight: 100;
+    cursor: pointer;
+    
+    background-color: transparent;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+
+    width: 60px;
+    height: 60px;
+
+    border-radius: 100%;
+}
+
+@keyframes btnHover {
+    from {background-color: transparent;}
+    to {background-color: rgb(28, 170, 236, 0.5);}
+}
+
+btn:hover {
+    background-color: rgb(28, 170, 236, 0.5);
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    animation-name: btnHover;
+    animation-duration: 0.2s;
+}
+
+
