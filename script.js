@@ -47,11 +47,53 @@ function clear() {
 
 function equal() {
     a = operate(a, b, operator);
+    b = 0;
+    operator = 'add';
+    document.querySelector('.userInputDisp').textContent = '';
     document.querySelector('.userInputDisp').textContent = a;
 }
 
 function evaluateUserInput(userInput) {
+    if (userInput=='+' || userInput=='-' || userInput=='x' || userInput=='/') 
+        switch (userInput) {
+            case '+':
+                equal()
+                operator = 'add';
+                break;
+            case '-':
+                equal()
+                operator = 'subtract';
+                break;
+            case 'x':
+                equal()
+                operator = 'multiply';
+                break;
+            case '/':
+                equal()
+                operator = 'divide';
+                break;
+        }
+    else if (userInput=='clr') {
+        clear()
+    }
+    else if (userInput=='=') {
+        equal()
+    }
+    else if (userInput=='.') {
+        b = String(b);
+        b += userInput;
+        document.querySelector('.userInputDisp').textContent = '';
+        document.querySelector('.userInputDisp').textContent = b;
+    }
+    else {
+        b = String(b);
+        b += userInput;
+        b = parseFloat(b);
+        document.querySelector('.userInputDisp').textContent = '';
+        document.querySelector('.userInputDisp').textContent = b;
+    }
     
+    userInput = '';
 }
 
 let btn = document.querySelectorAll('btn');
@@ -59,19 +101,6 @@ btn = Array.from(btn);
 btn.forEach( (button) => {
     button.addEventListener( 'click', () => {
         let content = button.textContent;
-        if (content=='+' || content=='-' || content=='x' || content=='/') {
-            userInput += content;
-        }
-        else if (content=='clr') {
-            clear();
-        }
-        else if (content =='=') {
-            operate(a, b, operator);
-        }
-        else {
-            userInput += content;
-            document.querySelector('.userInputDisp').textContent = userInput;
-        }
+        evaluateUserInput(content);
     })
 })
-
