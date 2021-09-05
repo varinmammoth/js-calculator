@@ -5,7 +5,7 @@ p {
 
 html, body {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: rgb(248, 241, 242);
@@ -13,6 +13,16 @@ html, body {
 
     margin: 0;
     height: 100%;
+}
+
+.info {
+    padding: 25px;
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+    text-align: center;
+}
+
+.info a {
+    color: black;
 }
 
 .calcContainer {
