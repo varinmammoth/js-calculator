@@ -154,7 +154,19 @@ btn:hover {
     to {background-color: rgba(36, 231, 238, 0.7);}
 }
 
-#operatorBtn btn:hover {
+.operatorBtn btn:hover {
+    background-color: rgba(36, 231, 238, 0.7);
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    animation-name: operatorBtnHover !important;
+    animation-duration: 0.2s;
+}
+
+.btnSelected {
     background-color: rgba(36, 231, 238, 0.7);
 
     display: flex;
