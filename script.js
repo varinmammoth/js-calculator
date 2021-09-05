@@ -28,7 +28,7 @@ function customParseFloat(numAsStr) {
     
 
 function parser(numAsStr) {
-    if (numAsStr[0]=='0') {
+    if (numAsStr[0]=='0' && numAsStr[1]!='.') {
         numAsStr = numAsStr.slice( 1 );
     }
     return numAsStr;
