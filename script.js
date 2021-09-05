@@ -1,12 +1,38 @@
 //custom parse float so that customParseFloat('12.000') returns 12.000 and not 12.
 //Source:  on StackOverflow
 function customParseFloat(numAsStr) {
-    const num = parseFloat(numAsStr);
-    const backToStr = String(num);
-    numOfZeros = numAsStr.length - backToStr.length -1;
-    return num.toFixed(numOfZeros);
-}
+
+    // first, we convert to a number and *back* to a string. 
+    let backToStr = String(parseFloat(numAsStr));
     
+    if(numAsStr.includes(".") ){
+      if(!backToStr.includes(".")){
+        // if we get here, then the original string has a . and
+        //  the converted doesn't - that indicates that the . was
+        //  at the right end of the original string. Let's add it back
+        backToStr += '.';
+      }
+      // in this case, we may have some zeroes to add. If the original
+      //  string was 12.000, we need to pad to the length of that 
+      //  string with zeroes.
+      // the replace tacked on the end here takes care of the 
+      //  initial state, where the display is 0 and the user enters
+      //  a number: original is 02, and we have 2 - so zero-padding
+      //  will make a mess.
+      backToStr += '.';
+      backToStr = backToStr.padEnd(numAsStr.length, "0");
+    }
+  
+    return backToStr;
+  }
+    
+
+function parser(numAsStr) {
+    if (numAsStr[0]=='0') {
+        numAsStr = numAsStr.slice( 1 );
+    }
+    return numAsStr;
+}
 
 //basic math functions
 function add(a,b) {
@@ -58,7 +84,7 @@ function clear() {
 }
 
 function equal() {
-    a = operate(a, b, operator);
+    a = operate(Number(a), Number(b), operator);
     b = 0;
     operator = 'add';
     if (String(a).length > 8) {
@@ -114,7 +140,7 @@ function evaluateUserInput(userInput) {
     else {
         b = String(b);
         b += userInput;
-        b = parseFloat(b);
+        b = parser(b); //removes 0s in front
         document.querySelector('.userInputDisp').textContent = '';
         document.querySelector('.userInputDisp').textContent = b;
     }
